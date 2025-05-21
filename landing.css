@@ -1,29 +1,31 @@
 body{
     background-image: url(mainbg.png);
-    height:200vh;
+    min-height: 200vh; /* Changed from fixed height to minimum */
     background-repeat: repeat;
 }
+
 h1{
     font-family: "Orbitron", sans-serif;
     color: white;
-    font-size: 3vw;
+    font-size: 300%;
     margin-left: 2%;
 }
+
 .container{
-    height:50%;
-    width:90%;
-    margin:auto;
+    height: auto; /* Changed from 50% to auto */
+    width: 90%;
+    margin: auto;
     background-color: rgba(1, 1, 44, 0.53);
     border-radius: 50px;
-    max-width: 1200px;
-    
+    padding-bottom: 2rem; /* Added padding for better spacing */
 }
+
 .Admin{
     text-align: left;
     margin-left: 5%;
     padding-top: 5%;
     font-family: sans-serif;
-    font-weight: 600;
+    font-weight: 400px;
     font-size: 250%;
     background: linear-gradient(to top right,
     rgb(0, 0, 123) 5%,
@@ -34,43 +36,60 @@ h1{
 }
 
 .main{
-    display:flex;
+    display: flex;
+    flex-wrap: wrap; /* Added to allow wrapping on smaller screens */
     align-items: flex-start;
-    height:30%;
+    height: auto; /* Changed from 30% to auto */
     width: 95%;
-    background-color:rgba(20, 15, 25, 0.42);
+    background-color: rgba(20, 15, 25, 0.42);
     margin-left: 2%;
     margin-right: 2%;
     border-radius: 20px;
     margin-top: 2%;
+    position: relative; /* Added for button positioning */
+    padding: 1.5% 1%; /* Added padding for spacing */
+}
+
+/* Adding specific styling for the second .main element */
+.main:nth-child(4) {
+    display: flex;
+    justify-content: space-between; /* Pushes items to opposite ends */
+    align-items: center;
 }
 
 .one, .two, .three{
-    display:inline-block;
-    height:80%;
-    width:20%;
-    background-color:rgba(20, 15, 25, 0.895);
-    margin-bottom: 1.5 ;
+    display: inline-block;
+    height: auto; /* Changed from 80% to auto */
+    min-height: 150px; /* Added minimum height */
+    width: 20%;
+    background-color: rgba(20, 15, 25, 0.895);
+    margin-bottom: 1.5%;
     margin-top: 1.5%;
     margin-left: 1%;
     border-radius: 20px;
     text-align: left;
     padding-left: 1%;
+    padding-top: 1%; /* Added top padding */
     font-family: sans-serif;
     color: rgba(255, 255, 255, 0.772)
 }
 
 #Analytics{
-    margin-top: 30%;
-    margin-left: 30%;
+    margin-top: 1.5%; /* Adjusted from 30% */
+    margin-left: auto; /* Changed from 30% to auto */
+    margin-right: 2%; /* Added right margin */
     width: 200px;
-    padding:10px;
+    padding: 10px;
     border: none;
     border-radius: 20px;
     color: white;
     font-family: sans-serif;
     background: linear-gradient(to right, #2c0259, #093278, rgb(239, 6, 138));
-    cursor:pointer
+    cursor: pointer;
+}
+
+#Analytics:hover{
+    opacity: 0.9; /* Added hover effect */
 }
 
 #Roles{
@@ -80,17 +99,60 @@ h1{
 }
 
 #myroles{
-    display:flex;
-    justify-content: center;
-    margin-top: 13vh;
-    margin-left: 87vh;
+    margin-left: auto; /* This pushes it to the right */
     width: 200px;
-    padding:10px;
+    padding: 10px;
     border: none;
     border-radius: 20px;
     color: white;
     font-family: sans-serif;
     background: linear-gradient(to right, #2c0259, #093278, rgb(239, 6, 138));
-    cursor:pointer
+    cursor: pointer;
 }
 
+/* Added media queries for responsiveness */
+@media screen and (max-width: 992px) {
+    .one, .two, .three {
+        width: 30%; /* Slightly wider on medium screens */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .one, .two, .three {
+        width: 45%; /* Two columns on tablet */
+    }
+    
+    .Admin {
+        font-size: 200%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .one, .two, .three {
+        width: 98%; /* Full width on mobile */
+    }
+    
+    h1 {
+        font-size: 250%;
+    }
+    
+    .Admin {
+        font-size: 180%;
+    }
+    
+    #Analytics, #myroles {
+        width: 160px;
+    }
+    
+    /* For mobile, special handling of second main section */
+    .main:nth-child(4) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    #myroles {
+        margin-top: 15px;
+        margin-left: 0;
+        align-self: flex-end; /* Push to right edge on mobile */
+    }
+}
